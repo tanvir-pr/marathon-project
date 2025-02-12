@@ -1,0 +1,21 @@
+app.get('/registration', async (req, res) => {
+    try {
+      const { email, searchQuery } = req.query;
+      
+      // Build query object
+      let query = { email };
+  
+      if (searchQuery) {
+        // Case-insensitive search using regex for marathonTitle
+        query.marathonTitle = { $regex: searchQuery, $options: 'i' }; // 'i' is for case-insensitive
+      }
+  
+      // Fetch the registrations based on the query
+      const registrations = await Registration.find(query);
+  
+      res.json(registrations); // Send registrations as a response
+    } catch (err) {
+      console.error("Error fetching registrations:", err);
+      res.status(500).json({ message: "Failed to fetch registrations." });
+    }
+  });
