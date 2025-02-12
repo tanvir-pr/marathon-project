@@ -19,7 +19,10 @@ const Navbar = () => {
                 {/* Desktop Menu */}
                 <div className="hidden md:flex gap-6">
                     <NavLink to="/" className={({ isActive }) => isActive ? "text-yellow-400" : "hover:text-orange-500"}>Home</NavLink>
+                   
                     <NavLink to="/marathon" className={({ isActive }) => isActive ? "text-yellow-400" : "hover:text-orange-500"}>Marathon</NavLink>
+                    <NavLink to="/contuctus" className={({ isActive }) => isActive ? "text-yellow-400" : "hover:text-orange-500"}>Contuct Us</NavLink>
+                    <NavLink to="/aboutus" className={({ isActive }) => isActive ? "text-yellow-400" : "hover:text-orange-500"}>About Us</NavLink>
                     {user && <NavLink to="/dashboard" className={({ isActive }) => isActive ? "text-yellow-400" : "hover:text-orange-500"}>Dashboard</NavLink>}
                 </div>
 

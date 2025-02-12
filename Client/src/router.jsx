@@ -13,6 +13,8 @@ import MarathonDetails from "./page/Marathon/MarathonDetails";
 import RegisterPage from "./page/Marathon/RegisterPage";
 import MyApplypage from "./page/MyApplyPage";
 import MyMarathonPage from "./page/MyMarathonPage";
+import ContactUs from "./layout/ContactUs";
+import AboutUs from "./layout/AboutUs";
 
 const router = createBrowserRouter([
     {
@@ -52,6 +54,14 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard",
                 element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+            },
+            {
+                path: "/contuctus",
+                element: <ContactUs></ContactUs>
+            },
+            {
+                path: "/aboutus",
+                element:<AboutUs></AboutUs>
             },
             {
                 path: "auth",
