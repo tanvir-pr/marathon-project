@@ -44,7 +44,7 @@ const AddMarathon = () => {
       <Pagetittle
         favicon="/assets/favicon.png"
         title="Add Marathon"></Pagetittle>
-      <div className="p-8">
+      <div className="p-8 pt-16">
         <h1 className="text-2xl font-bold mb-4">Add Marathon</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input

@@ -76,7 +76,7 @@ const MyApplypage = () => {
       <Pagetittle
         favicon="/assets/favicon.png"
         title="My Apply List"></Pagetittle>
-      <div className="my-apply-list p-4">
+      <div className="my-apply-list p-4 pt-16">
         <h1 className="text-xl font-bold mb-4">My Apply List</h1>
         {error && <p className="text-red-500">{error}</p>}
 

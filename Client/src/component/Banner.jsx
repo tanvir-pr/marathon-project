@@ -29,7 +29,7 @@ function Banner() {
   }, [slides.length]);
 
   return (
-    <div className="relative h-80 md:h-96 lg:h-[450px] overflow-hidden">
+    <div className="relative h-80 md:h-96 lg:h-[450px] overflow-hidden pt-16">
       {/* Slide Container */}
       {slides.map((slide, index) => (
         <div

@@ -78,7 +78,7 @@ const MyMarathonPage = () => {
       <Pagetittle
         favicon="/assets/favicon.png"
         title="My Marathons"></Pagetittle>
-      <div className="my-marathons-list p-4">
+      <div className="my-marathons-list p-4 pt-16">
         <h1 className="text-xl font-bold mb-4">My Marathons</h1>
         {error && <p className="text-red-500">{error}</p>}
         <table className="w-full border-collapse border border-gray-300">
