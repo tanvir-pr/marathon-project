@@ -1,89 +1,55 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
-
-
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
-
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="overflow-x-clip">
-            <div
-                className={
-                    location.pathname === '/'
-                        ? 'flex flex-wrap items-center justify-around border-white bg-white px-4 sm:px-10 md:px-20 mx-4 sm:mx-8 md:mx-16 rounded-t-xl mt-2'
-                        : 'mt-2 flex flex-wrap items-center justify-around border-white px-4 sm:px-10 md:px-20 mx-4 sm:mx-8 md:mx-16'
-                }
-            >
-                <div className="flex flex-col sm:flex-row justify-center items-center gap-2">
-                    <div>
-                        <img className="h-[30px]" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYLDQVOgk6-6zU1nfRukhbpvOOUiIbdQt3iQ&s" alt="" />
-                    </div>
-                    <div>
-                        <a className="btn btn-ghost text-lg sm:text-xl">Ruibinner</a>
-                    </div>
+        <nav className="bg-blue-500 text-white w-full fixed top-0 left-0 z-50">
+            <div className="container mx-auto px-6 md:px-12 flex justify-between items-center py-3">
+                {/* Logo */}
+                <div className="flex items-center gap-2">
+                    <img className="h-8" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYLDQVOgk6-6zU1nfRukhbpvOOUiIbdQt3iQ&s" alt="Logo" />
+                    <Link to="/" className="text-xl font-bold">Ruibinner</Link>
                 </div>
 
-                <div className="flex flex-wrap justify-center items-center gap-2">
-                    <NavLink
-                        to="/"
-                        className={({ isActive }) =>
-                            `font-bold text-sm sm:text-base border-2 rounded-2xl p-2 px-4 ${isActive ? 'text-warning bg-slate-200' : 'hover:text-orange-500'
-                            }`
-                        }
-                    >
-                        Home
-                    </NavLink>
-
-
-                    <NavLink
-                        to="/marathon"
-                        className={({ isActive }) =>
-                            `font-bold text-sm sm:text-base border-2 rounded-2xl p-2 px-4 ${isActive ? 'text-warning bg-slate-200' : 'hover:text-orange-500'
-                            }`
-                        }
-                    >
-                        Marathon
-                    </NavLink>
-                    
-                   
-                    
-                    <NavLink
-                        to="/dashboard"
-                        className={({ isActive }) =>
-                            `font-bold text-sm sm:text-base border-2 rounded-2xl p-2 px-4 ${isActive ? 'text-warning bg-slate-200' : 'hover:text-orange-500'
-                            }`
-                        }
-                    >
-                        Dashboard
-                    </NavLink>
+                {/* Desktop Menu */}
+                <div className="hidden md:flex gap-6">
+                    <NavLink to="/" className={({ isActive }) => isActive ? "text-yellow-400" : "hover:text-orange-500"}>Home</NavLink>
+                    <NavLink to="/marathon" className={({ isActive }) => isActive ? "text-yellow-400" : "hover:text-orange-500"}>Marathon</NavLink>
+                    {user && <NavLink to="/dashboard" className={({ isActive }) => isActive ? "text-yellow-400" : "hover:text-orange-500"}>Dashboard</NavLink>}
                 </div>
 
-                <div className="flex flex-col sm:flex-row items-center bg-gray-300 p-2 rounded-lg gap-2">
-                    {user && user?.email ? (
-                        <div>
-                            <img className="h-[30px] rounded-full" src={user?.photoURL} alt="" />
+                {/* User Dropdown */}
+                <div className="relative flex items-center gap-2">
+                    {user ? (
+                        <div className="flex items-center gap-2">
+                            <img className="h-8 w-8 rounded-full" src={user?.photoURL} alt="User" />
+                            <button onClick={logOut} className="bg-red-500 px-3 py-1 rounded-md">Logout</button>
                         </div>
                     ) : (
-                        <button className="btn btn-ghost btn-circle">
-                            <i className="fa-regular fa-user"></i>
-                        </button>
+                        <Link to="/auth/login" className="bg-blue-500 px-3 py-1 rounded-md">Login</Link>
                     )}
-
-                    <div>
-                        {user && user?.email ? (
-                            <button onClick={logOut}>Logout</button>
-                        ) : (
-                            <Link to="/auth/login">Login</Link>
-                        )}
-                    </div>
                 </div>
+
+                {/* Mobile Menu Button */}
+                <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+                    {isOpen ? <X size={24} /> : <Menu size={24} />}
+                </button>
             </div>
-        </div>
 
-
+            {/* Mobile Menu */}
+            {isOpen && (
+                <div className="md:hidden bg-gray-700 py-3 px-6">
+                    <NavLink to="/" className="block py-2 text-lg hover:text-yellow-400">Home</NavLink>
+                    <NavLink to="/marathon" className="block py-2 text-lg hover:text-yellow-400">Marathon</NavLink>
+                    {user && <NavLink to="/dashboard" className="block py-2 text-lg hover:text-yellow-400">Dashboard</NavLink>}
+                </div>
+            )}
+        </nav>
     );
 };
 
