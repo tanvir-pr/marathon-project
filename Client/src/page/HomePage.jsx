@@ -5,6 +5,7 @@ import Banner from "../component/Banner";
 import HowItWorks from "../component/HowItWorks";
 import AboutMarathon from "../component/AboutMarathon";
 import MarathonCommunity from "../component/MarathonCommunity";
+import WhyJoin from "../component/WhyJoin";
 const HomePage = () => {
   const [marathons, setMarathons] = useState([]);
   const [upcomingMarathons, setUpcomingMarathons] = useState([]);
@@ -241,6 +242,7 @@ const HomePage = () => {
       <HowItWorks></HowItWorks>
       <AboutMarathon></AboutMarathon>
       <MarathonCommunity></MarathonCommunity>
+      <WhyJoin></WhyJoin>
 
 
 
