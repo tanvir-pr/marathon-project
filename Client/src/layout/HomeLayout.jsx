@@ -16,12 +16,12 @@ const HomeLayout = () => {
             favicon="/assets/favicon.png"
                 title="Home"></Pagetittle>
             <Navbar></Navbar>
-           
+            {/* <MarathonCommunity></MarathonCommunity>
+            <AboutMarathon></AboutMarathon>
+            <HowItWorks></HowItWorks> */}
            
             <Outlet></Outlet>
-            <MarathonCommunity></MarathonCommunity>
-            <AboutMarathon></AboutMarathon>
-            <HowItWorks></HowItWorks>
+            
            
            
             <Footer></Footer>

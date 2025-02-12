@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import Banner from "../component/Banner";
+import HowItWorks from "../component/HowItWorks";
+import AboutMarathon from "../component/AboutMarathon";
+import MarathonCommunity from "../component/MarathonCommunity";
 const HomePage = () => {
   const [marathons, setMarathons] = useState([]);
   const [upcomingMarathons, setUpcomingMarathons] = useState([]);
@@ -232,6 +235,12 @@ const HomePage = () => {
           ))}
         </div>
       </section>
+
+
+
+      <HowItWorks></HowItWorks>
+      <AboutMarathon></AboutMarathon>
+      <MarathonCommunity></MarathonCommunity>
 
 
 
